@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="/css/bootstrap.css" rel="StyleSheet"/>
+        <link rel="StyleSheet" href="/css/style.css"/>
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+
+        <title>App</title>
+    </head>
+    <body>
+      
+      {{!-- <div class="header"> --}}
+        
+        <nav class="navbar navbar-light navbar-expand-lg bg-success
+         text-white">
+          <a class="text-white navbar-brand">
+            <i class="fab fb-pagelines"></i>OpenTest
+          </a>
+          <ul class="nav nav-pills pull-right">
+           
+            {{#unless user}}
+            <li role="presentation"><a href="/users/login"><span class="logout"><i class="glyphicon glyphicon-log-in"></i></span>Login</a></li>
+            <!--<li role="presentation"><a href="/users/register"><span class="logout"><i class="glyphicon glyphicon-edit"></i></span>Sign up</a></li>-->
+            {{/unless}}
+
+            {{#if user}}
+             <li role="presentation" ><a href="/"><span class="logout"><i class="glyphicon glyphicon-home" style="font-size:28px; color:rgba(4, 25, 71, 0.897)"></i></span>Dashboard</a></li>
+             
+            <!--<li role="presentation"><a href="/users/logout"><span class="logout"><i class="glyphicon glyphicon-log-out"></i></span>Logout</a></li>-->
+            <li class="dropdown profile_menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img alt="Avatar" src="../img/user.png" style="background-size:28px"/><span>{{user.username}}</span> <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">My Account</a></li>
+              <li class="presentation"><a href="/profile"><span class="logout"><i class="glyphicon glyphicon-user"></i></span>Profile</a></li>
+              <li><a href="#"><span class="logout"><i class="glyphicon glyphicon-inbox"></i></span>Messages</a></li>
+              <li class="divider"></li>
+              <li role="presentation"><a href="/users/logout"><span class="logout"><i class="glyphicon glyphicon-log-out"></i></span>Logout</a></li>
+            </ul>
+          </li>
+            {{/if}}
+          </ul>
+        </nav>
+      {{!-- </div>   --}}
+      <div class="container">
+      <div class="row">
+      <div class="row col-lg-12">
+          {{#if success_msg}}
+          <div class="alert alert-success">{{success_msg}}</div>
+          {{/if}}
+
+          {{#if error_msg}}
+          <div class="alert alert-danger">{{error_msg}}</div>
+          {{/if}}
+
+          {{#if error}}
+          <div class="alert alert-danger">{{error}}</div>
+          {{/if}}
+          {{{body}}}
+        </div>
+      </div>
+
+      <script src="js/jquery.js"></script>
+  
+  </div>
+      <footer class="footer">
+        <p>OpenTest.</p>
+      </footer>
+
+    <!-- /container -->
+
+   <!-- Placed at the end of the document so the pages load faster -->
+  <script src="js/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    </body>
+
+</html> 
